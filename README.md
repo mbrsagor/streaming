@@ -1,5 +1,10 @@
 # Django REST API
-##### Basically the project I'm teching some diploma students. They can't find out `Django` teacher.
+##### Basically the project I'm teaching some diploma students. They can't find out `Django` teacher. That's why I'm working with them.
+
+###### IF you want to learn Django `Restfully API` you may follow the project sourcecode.
+
+####### NB: In the project I will share basic to intermediate `API` development.
+
 ## Setup
 
 ### Dependancies
@@ -10,9 +15,10 @@
 
 
 ### Create Database
-The roject I'm using MySql database. If you would use to `mysql`database you should follow the `command` 
+The project I'm using MySql database. If you would use to `mysql`database you should follow the `command` 
 
-First you install `mysql` on your Machine/operating system. Here I don't explain `how to install mysql?` in your system.
+First you install `mysql` on your Machine/operating system. Here I don't explain `how to install mysql?` in your 
+system. your may search google how to work it!
 
 <h2>How to create mysql database</h2>
 First go to your terminal then follow the command line
