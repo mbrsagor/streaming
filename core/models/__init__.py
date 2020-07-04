@@ -1,0 +1,1 @@
+from core.models.base import *__author = 'Sagor'__all__ = [    'BaseEntity']
