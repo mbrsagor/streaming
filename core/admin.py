@@ -1,3 +1,7 @@
 from django.contrib import admin
+from core.models.publication import *
+from core.models.article import *
 
-# Register your models here.
+
+admin.site.register(Publication)
+admin.site.register(Article)
