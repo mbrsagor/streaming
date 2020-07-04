@@ -1,0 +1,1 @@
+from core.models.publication import Publicationfrom core.serializers.publication import PublicationSerializerfrom rest_framework.viewsets import ModelViewSetclass PublicationViewSet(ModelViewSet):    queryset = Publication.objects.all()    serializer_class = PublicationSerializer

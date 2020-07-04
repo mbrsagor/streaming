@@ -1,1 +1,1 @@
-from core.models.base import *__author = 'Sagor'__all__ = [    'BaseEntity']
+from core.models.base import *from core.models.publication import *from core.models.article import *__author = 'Sagor'__all__ = [    'Publication',    'article',    'BaseEntity',]

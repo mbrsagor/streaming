@@ -1,0 +1,1 @@
+from core.models.base import BaseEntityfrom django.db import modelsclass Publication(BaseEntity):    title = models.CharField(max_length=100)    class Meta:        ordering = ['title']    def __str__(self):        return self.title[:30]

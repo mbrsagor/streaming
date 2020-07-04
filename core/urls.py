@@ -1,1 +1,1 @@
-from django.urls import pathurlpatterns = []
+from django.urls import path, includefrom core.views.publication_views import PublicationViewSetfrom core.views.article import ArticleAPIViewfrom rest_framework.routers import DefaultRouterrouter = DefaultRouter()router.register('publication', PublicationViewSet)urlpatterns = [    path('article/', ArticleAPIView.as_view(), name='article'),    path('', include(router.urls))]
