@@ -1,0 +1,1 @@
+# from rest_framework.decorators import list_routefrom core.models.product import Categoryfrom core.serializers.product_serializer import CategorySerializerfrom core.views.viewsets import BaseModelViewSetclass CategoryViewSet(BaseModelViewSet):    model = Category    serializer_class = CategorySerializer    fields = (        'id', 'name', 'parent'    )
