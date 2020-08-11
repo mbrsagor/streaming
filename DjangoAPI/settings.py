@@ -59,6 +59,7 @@ MIDDLEWARE = [
 ]
 
 # REST FRAMEWORK SETTINGS
+"""
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'drf_role.permissions.BaseRolePermission',
@@ -70,9 +71,10 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 100,
+    'PAGE_SIZE': 10,
     'PAGINATE_BY_PARAM': 'page_size'
 }
+"""
 
 ROOT_URLCONF = 'DjangoAPI.urls'
 
