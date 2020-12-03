@@ -1,6 +1,6 @@
 from django.contrib import admin
-from core.models.publication import *
-from core.models.article import *
+from core.models.publication import Publication
+from core.models.article import Article
 
 
 admin.site.register(Publication)
