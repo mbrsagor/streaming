@@ -123,6 +123,30 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# CORS CONFIG 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'same-origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'OPTIONS',
+    'PATCH',
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
