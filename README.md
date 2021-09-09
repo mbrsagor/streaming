@@ -49,3 +49,17 @@ python3 manage.py runserver # or
 If you use `mysql` in your another project must be install mysql-client
 `pip install mysqlclient`
 
+
+###### If you run the app `docker` please follow the instructions:
+Open your terminal then run the command for `docker`
+
+```bash
+docker compose up
+```
+If you want to migrate or something similar please follow below commands:
+```bash
+docker-compose exec backend sh
+python manage.py migrate
+python manage.py makemigrations
+python manage.py createsuperuser
+```
