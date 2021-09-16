@@ -1,9 +1,5 @@
 # Django REST API
-##### Basically the project I'm teaching some diploma students. They can't find out `Django` teacher. That's why I'm working with them.
-
-###### IF you want to learn Django `Restfully API` you may follow the project sourcecode.
-
-####### NB: In the project I will share basic to intermediate `API` development.
+The following steps will walk you thru installation on a Mac. I think linux should be similar. It's also possible to develop on a Windows machine, but I have not documented the steps. If you've developed django apps on Windows, you should have little problem getting up and running.
 
 ## Setup
 
