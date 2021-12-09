@@ -58,7 +58,6 @@ THIRD_PARTY_APPS = [
     'drf_role',
 ]
 
-
 INSTALLED_APPS = DEFAULT_APPS + MY_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
@@ -184,6 +183,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Mail sending using SMTP
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -194,7 +200,6 @@ DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 SERVER_EMAIL = env('SERVER_EMAIL')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-
 
 # JWT configurations
 JWT_AUTH = {
