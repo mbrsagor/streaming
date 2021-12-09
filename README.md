@@ -7,20 +7,16 @@ The following steps will walk you thru installation on a Mac. I think linux shou
 
 - Python 3.6.9 
 - Django 3.0
-- Mysql 8.0.19
+- PostgreSQL 12.8
 
 
 ### Create Database
-The project I'm using MySql database. If you would use to `mysql`database you should follow the `command` 
-
-First you install `mysql` on your Machine/operating system. Here I don't explain `how to install mysql?` in your 
-system. your may search google how to work it!
 
 <h2>How to create mysql database</h2>
 First go to your terminal then follow the command line
 ```
-mysql -u root -password
-create dataase db_name;
+psql postgres
+CREATE DATABASE db_name;
 ```
 
 Create a python virtual environment:
@@ -35,16 +31,13 @@ Activate it:
 source env/bin/activate
 ```
 
+After that create `.env` file and paste all code from `.env-sample` file and add validation information
+
 ```
 pip install -r requirements.txt
-
-python3 manage.py runserver # or
+./manage.py migrate
 ./manage.py runserver
 ```
-
-If you use `mysql` in your another project must be install mysql-client
-`pip install mysqlclient`
-
 
 ###### If you run the app `docker` please follow the instructions:
 Open your terminal then run the command for `docker`
