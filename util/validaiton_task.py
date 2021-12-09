@@ -5,3 +5,7 @@ def task_validation(attrs):
         return "Category field is required"
     else:
         pass
+
+
+def add_task_validation(attrs):
+    pass
