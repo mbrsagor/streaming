@@ -1,25 +1,44 @@
-version: '3'
+version: "3"
+
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 8000:8000
+  db:
+    container_name: djangorestapi_db
+    image: postgres:12.3
+    restart: always
     volumes:
-      - .:/app
+      - postgres_data:/var/lib/postgresql/data
+    env_file: ./.env.docker
+
+  web:
+    container_name: project
+    build: .
+    restart: always
+    command: gunicorn project.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
+    volumes:
+      - media_data:/app/media
+      - static_data:/app/static
+    env_file:
+      - .env
     depends_on:
       - db
+    links:
+      - db:db
 
-  db:
-    image: mysql:5.7.22
+  nginx:
+    container_name: djangoRestAPI_nginx
+    build: ./nginx
     restart: always
-    environment:
-      MYSQL_DATABASE: djangoAPI
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 12345678
-      MYSQL_ROOT_PASSWORD: 12345678
-    volumes:
-      - .dbdata:/var/lib/mysql
     ports:
-      - 33066:3306
+      - 8086:80
+    depends_on:
+      - web
+    volumes:
+    - media_data:/media
+    - static_data:/static
+
+volumes:
+  media_data:
+  static_data:
+  postgres_data:

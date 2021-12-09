@@ -1,0 +1,12 @@
+docker-build.sh
+Dockerfile*
+
+README.md
+.git/
+.gitignore
+db.sqlite3
+env.toml
+example.env.toml
+help/
+nginx/
+docker-compose.yml
