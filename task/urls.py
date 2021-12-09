@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TaskAPIView, TaskUpdateDeleteAPIView
+from task.views.task_view import TaskAPIView, TaskUpdateDeleteAPIView
 
 urlpatterns = [
     path('tasks/', TaskAPIView.as_view(), name='task'),

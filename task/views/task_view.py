@@ -1,8 +1,8 @@
 from rest_framework import views, status, permissions
 from rest_framework.response import Response
 
-from .models import Task
-from .serializers import TaskSerializer
+from task.models import Task
+from task.serializers import TaskSerializer
 from util.custom_response import prepare_success_response, prepare_create_success_response, prepare_error_response
 from util.validaiton_task import task_validation
 

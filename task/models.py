@@ -19,7 +19,7 @@ class AddTask(BaseEntity):
     title = models.CharField(max_length=120)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='task_owner')
     task_name = models.ManyToManyField(Task, related_name='task')
-    assign_by = models.ManyToManyField(User, related_name='assign_user')
+    assign_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='assign_user')
     is_active = models.BooleanField(default=True)
     status = models.CharField(choices=TaskStatus.choices(), default=TaskStatus.PROGRESS.value, max_length=12)
     start_date = models.DateField()
