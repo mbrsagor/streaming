@@ -47,7 +47,8 @@ DEFAULT_APPS = [
 ]
 
 MY_APPS = [
-    'core'
+    'core',
+    'task',
 ]
 
 THIRD_PARTY_APPS = [
