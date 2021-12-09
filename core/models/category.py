@@ -8,3 +8,9 @@ class Category(BaseEntity):
 
     def __str__(self):
         return self.title[:20]
+
+    def get_children(self):
+        return Category.objects.filter(parent=self)
+
+    def children_count(self):
+        return Category.objects.filter(parent=self).count()

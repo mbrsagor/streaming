@@ -27,3 +27,9 @@ class RoleEnum(ChoiceEnum):
     EDITOR = 'Editor'
     MANAGER = 'Manager'
     FARMER = 'Farmer'
+
+
+class TaskStatus(ChoiceEnum):
+    PROGRESS = 'Progress'
+    COMPLETE = 'Completed'
+    INCOMPLETE = "InCompleted"
