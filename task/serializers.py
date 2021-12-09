@@ -9,18 +9,14 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
 class AddTaskSerializer(serializers.ModelSerializer):
+    tasks = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = AddTask
-        fields = (
-            'id',
-            'title',
-            'user',
-            'task_name',
-            'assign_by',
-            'is_active',
-            'status',
-            'start_date'
-            'end_date',
-            'created_at',
-            'created_at'
-        )
+        read_only_fields = ['user']
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep["tasks"] = TaskSerializer(instance.tasks.all(), many=True).data
+        return rep
