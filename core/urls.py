@@ -2,8 +2,7 @@ from django.urls import path, include
 from core.views.publication_views import PublicationViewSet
 from core.views.article import ArticleAPIView
 from core.views.profile_views import *
-from core.views.product_view import *
-# from core.views.category_view import CategoryViewSet
+from core.views.category_view import CategoryViewSet
 
 
 from rest_framework.routers import DefaultRouter

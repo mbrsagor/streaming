@@ -1,7 +1,7 @@
 from core.models.base import *
 from core.models.publication import *
 from core.models.article import *
-from core.models.category import *
+from core.models.category import Category
 
 __author = 'Sagor'
 

@@ -5,7 +5,7 @@ db.sqlite3
 .vscode
 media
 venv
-media
+migrations
 static
 .env
 .DS_Store
