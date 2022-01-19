@@ -31,12 +31,19 @@ Activate it:
 source env/bin/activate
 ```
 
-After that create `.env` file and paste all code from `.env-sample` file and add validation information
+###### Then create ``.env`` file and paste code from `.env-sample` file and add validate information.
 
+-------------------------------------------
+```bash
+|--> .env-sample
+|--> .env
 ```
+
+```bash
 pip install -r requirements.txt
 ./manage.py migrate
 ./manage.py runserver
+./manage.py createsuperuser
 ```
 
 ###### If you run the app `docker` please follow the instructions:
