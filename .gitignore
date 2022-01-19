@@ -9,3 +9,5 @@ migrations
 static
 .env
 .DS_Store
+DjangoAPI/__pycache__/
+core/__pycache__/
