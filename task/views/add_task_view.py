@@ -10,7 +10,11 @@ class CreateAddTaskView(views.APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request):
-        pass
+        serializer = AddTaskSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(prepare_create_success_response(serializer.data), status=status.HTTP_201_CREATED)
+        return Response(prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request):
         task = AddTask.objects.all()
