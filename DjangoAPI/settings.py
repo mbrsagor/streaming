@@ -55,7 +55,6 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
-    'drf_role',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + MY_APPS + THIRD_PARTY_APPS
@@ -73,9 +72,6 @@ MIDDLEWARE = [
 # REST FRAMEWORK SETTINGS
 """
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'drf_role.permissions.BaseRolePermission',
-    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),

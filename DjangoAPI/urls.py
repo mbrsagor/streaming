@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/core/', include('core.urls')),
     path('api/task/', include('task.urls')),
-    path('api/v1', include('drf_role.urls')),
     path('api/auth/', include('rest_framework.urls')),
 ]
 
