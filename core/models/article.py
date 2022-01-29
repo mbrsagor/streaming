@@ -1,1 +1,0 @@
-from core.models.base import BaseEntityfrom django.db import modelsfrom core.models import Publicationclass Article(BaseEntity):    headline = models.CharField(max_length=120)    publications = models.ManyToManyField(Publication)    class Meta:        ordering = ['headline']    def __str__(self):        return self.headline[:20]

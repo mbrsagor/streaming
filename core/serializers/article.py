@@ -1,1 +1,0 @@
-from core.models.article import Articlefrom rest_framework import serializersclass ArticleSerializer(serializers.ModelSerializer):    class Meta:        model = Article        fields = [            'id', 'headline', 'publications',            'created_at', 'updated_at'        ]
