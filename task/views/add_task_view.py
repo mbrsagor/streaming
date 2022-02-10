@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 from rest_framework import views, status, permissions
 from rest_framework.response import Response
 
