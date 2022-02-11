@@ -1,7 +1,7 @@
 from django.urls import path, include
 from core.views import auth_view
 from core.views.category_view import CategoryViewSet
-from core.views.person_view import ModuleViewSet, StudentViewSet
+from core.views.student_view import ModuleViewSet, StudentViewSet
 
 
 from rest_framework.routers import DefaultRouter
