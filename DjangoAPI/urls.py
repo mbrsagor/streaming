@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/core/', include('core.urls')),
     path('api/task/', include('task.urls')),
+    path('api/payment/', include('payment.urls')),
+    # DRF auth URL
     path('api/auth/', include('rest_framework.urls')),
 ]
 
