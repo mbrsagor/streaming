@@ -49,6 +49,7 @@ DEFAULT_APPS = [
 MY_APPS = [
     'core',
     'task',
+    'payment',
 ]
 
 THIRD_PARTY_APPS = [
@@ -89,8 +90,7 @@ ROOT_URLCONF = 'DjangoAPI.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

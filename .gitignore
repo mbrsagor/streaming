@@ -1,5 +1,5 @@
 .idea
-__pycache__/
+__pycache__
 *.pyc
 db.sqlite3
 .vscode
@@ -11,3 +11,4 @@ static
 .DS_Store
 DjangoAPI/__pycache__/
 core/__pycache__/
+payment/__pycache__/
