@@ -14,7 +14,7 @@ Follow these steps:
 ```sh
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
-POSTGRES_DB=cutout_portal
+POSTGRES_DB=streaming
 ```
 
 ## Up and Run

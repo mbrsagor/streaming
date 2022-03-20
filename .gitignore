@@ -6,9 +6,5 @@ db.sqlite3
 media
 venv
 migrations
-static
 .env
 .DS_Store
-DjangoAPI/__pycache__/
-core/__pycache__/
-payment/__pycache__/

@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    container_name: djangorestapi_db
+    container_name: streaming
     image: postgres:12.3
     restart: always
     volumes:
@@ -13,7 +13,7 @@ services:
     container_name: project
     build: .
     restart: always
-    command: gunicorn project.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn streaming.wsgi:application --bind 0.0.0.0:8000
     expose:
       - 8000
     volumes:
@@ -27,7 +27,7 @@ services:
       - db:db
 
   nginx:
-    container_name: djangoRestAPI_nginx
+    container_name: streaming_nginx
     build: ./nginx
     restart: always
     ports:

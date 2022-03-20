@@ -1,12 +1,9 @@
-# Django REST API
-The following steps will walk you thru installation on a Mac. I think linux should be similar. It's also possible to develop on a Windows machine, but I have not documented the steps. If you've developed django apps on Windows, you should have little problem getting up and running.
+# Streaming
+> Online OTT platform streaming backend web application.
 
-## Setup
+### Dependencies
 
-### Dependancies
-
-- Python 3.6.9 
-- Django 3.0
+- Python 3.8
 - PostgreSQL 12.8
 
 
@@ -14,15 +11,21 @@ The following steps will walk you thru installation on a Mac. I think linux shou
 
 <h2>How to create mysql database</h2>
 First go to your terminal then follow the command line
-```
+```psql
 psql postgres
-CREATE DATABASE db_name;
+CREATE DATABASE streaming;
+```
+
+#### Setup:
+```bash
+git clone https://github.com/mbrsagor/streaming.git
+cd streaming
 ```
 
 Create a python virtual environment:
 
 ```bash/zsh
-virtualenv venv --python=python3.6
+virtualenv venv --python=python3.8
 ```
 
 Activate it:
@@ -31,7 +34,7 @@ Activate it:
 source env/bin/activate
 ```
 
-###### Then create ``.env`` file and paste code from `.env-sample` file and add validate information.
+###### Then create ``.env`` file and paste code from `.env_sample` file and add validate information.
 
 -------------------------------------------
 ```bash
