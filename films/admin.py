@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Type, Trailer, Film
+from .models import Category, Trailer, Film
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -10,6 +10,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 
-admin.site.register(Type)
 admin.site.register(Trailer)
 admin.site.register(Film)
