@@ -4,7 +4,7 @@ from django.contrib.auth import password_validation
 from .models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(style={'input_type': 'password', 'placeholder': 'Password'})
 
     class Meta:
@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        user = User.objects.create(
+        user = User.objects.create_user(
             name=validated_data['name'],
             email=validated_data['email'],
             phone_number=validated_data['phone_number'],

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
-
+from datetime import date, datetime
 from utils.role_util import RoleEnum
 from .manager import UserManager
 
@@ -23,3 +23,34 @@ class User(AbstractUser, BaseEntity):
 
     def __str__(self):
         return self.name
+
+
+class Profile(BaseEntity):
+    username = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    profile_picture = models.ImageField(upload_to='profile/%y/%m', blank=True, null=True)
+    date_of_birth = models.DateField(default=datetime.now)
+    address = models.TextField(default='')
+
+    def __str__(self):
+        return self.username.name
+
+    @property
+    def current_age(self):
+        today = date.today()
+        return (today - self.date_of_birth).days
+
+    @property
+    def get_photo_url(self):
+        if self.profile_picture and hasattr(self.profile_picture, 'url'):
+            return self.profile_picture.url
+        else:
+            return "/static/images/avatar.jpg"
+
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        profile, created = Profile.objects.get_or_create(username=instance)
+        return profile
+
+
+post_save.connect(create_user_profile, sender=User)
