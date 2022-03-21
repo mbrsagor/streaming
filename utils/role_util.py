@@ -13,4 +13,7 @@ class RoleEnum(Enum):
         return [(key.value, key.name) for key in cls]
 
 
-create_allow_access = RoleEnum.Admin or RoleEnum.MANAGER or RoleEnum.DIRECTOR
+# Add role permission
+allow_access_admin = RoleEnum.Admin.value
+allow_access_director = RoleEnum.DIRECTOR.value
+allow_access_manager = RoleEnum.MANAGER.value
