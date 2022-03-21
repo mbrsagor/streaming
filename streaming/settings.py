@@ -54,7 +54,7 @@ PROJECT_APPS = [
 # Third party apps
 OTHER_APPS = [
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + OTHER_APPS
@@ -168,3 +168,10 @@ DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 SERVER_EMAIL = env('SERVER_EMAIL')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+
+# Rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}

@@ -4,9 +4,11 @@ Django==4.0.3
 django-environ==0.4.5
 django-filter==2.4.0
 djangorestframework==3.13.1
+djangorestframework-simplejwt==5.1.0
 Pillow==9.0.1
 pycodestyle==2.6.0
 pycparser==2.20
+PyJWT==2.3.0
 pytz==2022.1
 sqlparse==0.4.2
 toml==0.10.2
