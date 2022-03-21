@@ -11,3 +11,6 @@ class RoleEnum(Enum):
     @classmethod
     def get_choices(cls):
         return [(key.value, key.name) for key in cls]
+
+
+create_allow_access = RoleEnum.Admin or RoleEnum.MANAGER or RoleEnum.DIRECTOR
