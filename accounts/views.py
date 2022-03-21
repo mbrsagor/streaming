@@ -1,8 +1,8 @@
-from rest_framework import views, status, permissions
+from rest_framework import views, generics, status, permissions
 from rest_framework.response import Response
 
 from .models import User, Profile
-from .serializers import UserRegistrationSerializer, UserSerializer, ProfileSerializer
+from .serializers import UserRegistrationSerializer, UserSerializer, ProfileSerializer, PasswordChangeSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
 
 
@@ -63,3 +63,16 @@ class ProfileUpdateDeleteView(views.APIView):
             profile.delete()
             return Response(prepare_success_response('Profile has been deleted'), status=status.HTTP_200_OK)
         return Response(prepare_error_response('No profile found for this ID '), status=status.HTTP_400_BAD_REQUEST)
+
+
+class ChangePasswordView(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = PasswordChangeSerializer
+
+
+class LogoutAPIView(views.APIView):
+    def post(self, request):
+        response = Response()
+        response.delete_cookie('jwt')
+        response.data = prepare_success_response('User logout successfully')
+        return response
