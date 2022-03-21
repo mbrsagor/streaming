@@ -44,7 +44,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         read_only_fields = ('auth',)
-        fields = '__all__'
+        fields = (
+            'id', 'auth', 'date_of_birth', 'address', 'current_age',
+            'created_at', 'updated_at'
+        )
 
     def to_representation(self, instance):
         response = super().to_representation(instance)
