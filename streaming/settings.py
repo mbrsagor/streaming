@@ -50,6 +50,7 @@ DEFAULT_APPS = [
 # Project Apps
 PROJECT_APPS = [
     'accounts',
+    'films',
 ]
 
 # Third party apps
