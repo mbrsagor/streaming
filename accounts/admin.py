@@ -13,10 +13,10 @@ admin.site.register(User, UserModelAdmin)
 
 
 class ProfileModelAdmin(admin.ModelAdmin):
-    list_display = ['id', 'username', 'date_of_birth', 'address', 'created_at']
-    list_display_links = ['id', 'username']
-    list_filter = ['username', 'date_of_birth']
-    search_fields = ['username', 'date_of_birth']
+    list_display = ['id', 'auth', 'date_of_birth', 'address', 'created_at']
+    list_display_links = ['id', 'auth']
+    list_filter = ['auth', 'date_of_birth']
+    search_fields = ['auth', 'date_of_birth']
 
 
 admin.site.register(Profile, ProfileModelAdmin)

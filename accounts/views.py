@@ -8,7 +8,7 @@ from utils.response import prepare_create_success_response, prepare_success_resp
 
 class UserRegistrationAPIView(views.APIView):
     permission_classes = (permissions.AllowAny,)
-    parser_classes = UserRegistrationSerializer
+    serializer_class = UserRegistrationSerializer
 
     def post(self, request):
         try:
