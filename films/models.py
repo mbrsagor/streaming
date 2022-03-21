@@ -14,6 +14,9 @@ class Category(BaseEntity):
     def __str__(self):
         return self.name[:30]
 
+    def creator_name(self):
+        return self.creator.name
+
 
 class Actor(BaseEntity):
     name = models.CharField(max_length=35)
@@ -31,7 +34,7 @@ class Trailer(BaseEntity):
     trailer_url = models.URLField(max_length=250)
 
 
-class Films(BaseEntity):
+class Film(BaseEntity):
     name = models.CharField(max_length=120)
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='filmsCategory')
     actors = models.ManyToManyField(Actor, related_name='movieActors', blank=True)
