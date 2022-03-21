@@ -34,10 +34,10 @@ class Trailer(BaseEntity):
 
 
 class Film(BaseEntity):
+    director = models.ForeignKey(User, on_delete=models.CASCADE, related_name='filmsDirector')
     name = models.CharField(max_length=120)
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='filmsCategory')
     actors = models.ManyToManyField(Actor, related_name='movieActors', blank=True)
-    director = models.ForeignKey(User, on_delete=models.CASCADE, related_name='filmsDirector')
     producers = JSONField(blank=True, null=True, default=None)
 
     Type = (
@@ -47,7 +47,7 @@ class Film(BaseEntity):
     )
 
     types = models.CharField(max_length=1, choices=Type)
-    is_publish = models.BooleanField(default=True)
+    is_publish = models.BooleanField(default=False)
     release_date = models.DateTimeField()
     description = models.TextField()
     price = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
