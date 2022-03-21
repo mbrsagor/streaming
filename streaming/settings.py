@@ -46,13 +46,18 @@ DEFAULT_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# Project Apps
+PROJECT_APPS = [
+    'accounts',
+]
+
 # Third party apps
 OTHER_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 ]
 
-INSTALLED_APPS = DEFAULT_APPS + OTHER_APPS
+INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS + OTHER_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -150,6 +155,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Auth user model
+AUTH_USER_MODEL = 'accounts.User'
 
 # Mail sending using SMTP
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
