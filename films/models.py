@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import JSONField
+from django.utils.text import slugify
 
 from accounts.models import BaseEntity, User
 
@@ -36,6 +37,7 @@ class Trailer(BaseEntity):
 class Film(BaseEntity):
     director = models.ForeignKey(User, on_delete=models.CASCADE, related_name='filmsDirector')
     name = models.CharField(max_length=120)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='filmsCategory')
     actors = models.ManyToManyField(Actor, related_name='movieActors', blank=True)
     producers = JSONField(blank=True, null=True, default=None)
@@ -58,3 +60,8 @@ class Film(BaseEntity):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        value = self.name
+        self.slug = slugify(value, allow_unicode=True)
+        super().save(*args, **kwargs)

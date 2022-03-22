@@ -13,7 +13,7 @@ class FilmSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'director', 'name', 'category_name', 'actors', 'producers', 'types',
             'is_publish', 'release_date', 'description', 'price', 'discount_price',
-            'image', 'video', 'is_watchable', 'created_at', 'updated_at'
+            'image', 'video', 'is_watchable', 'slug', 'created_at', 'updated_at'
         ]
 
     def get_or_create_actor(self, actors):
