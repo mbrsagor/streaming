@@ -192,7 +192,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 15,
-    'DATETIME_FORMAT': '%Y-%m-%d %I:%M %p ',
+    'DATETIME_FORMAT': '%Y-%m-%d %I:%M %p',
 }
 
 # JWT settings configuration

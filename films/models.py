@@ -65,3 +65,23 @@ class Film(BaseEntity):
         value = self.name
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
+
+
+class Purchase(BaseEntity):
+    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(Film, on_delete=models.CASCADE, related_name='buy_films')
+    quantity = models.IntegerField(default=0)
+    vat = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    status = models.BooleanField(default=True)
+
+    PAYMENT_TYPES = (
+        ('T1', 'CREDIT CARD'),
+        ('T2', 'VISA CARD'),
+        ('T3', 'BANK'),
+        ('T4', 'STRIPE'),
+    )
+    payment = models.CharField(max_length=2, choices=PAYMENT_TYPES)
+    is_download = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.customer.name

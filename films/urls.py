@@ -5,6 +5,7 @@ from films.views.trailer_view import TrailerCreateListView, TrailerListView, Tra
     TrailerDetailsView
 from films.views.film_view import FilmCreateAPIView, FilmListView, DirectorOwnMovieList, FilmDetailsView, \
     FilmUpdateDeleteAPIView
+from films.views.purchase_view import PurchaseCreateListView
 
 urlpatterns = [
     # Category
@@ -21,4 +22,6 @@ urlpatterns = [
     path('my-all-films/', DirectorOwnMovieList.as_view()),
     path('films/<slug>/', FilmDetailsView.as_view()),
     path('film/<pk>/', FilmUpdateDeleteAPIView.as_view()),
+    # purchase
+    path('purchase/', PurchaseCreateListView.as_view()),
 ]
