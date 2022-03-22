@@ -92,9 +92,7 @@ class Purchase(BaseEntity):
 
     @property
     def total_price(self):
-        item_price = self.item.price
-        _price = int(item_price)
-        return _price * self.quantity - self.get_discount_price
+        return self.item.price * self.quantity - self.vat
 
     @property
     def get_item_name(self):
