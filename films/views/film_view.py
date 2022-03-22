@@ -25,6 +25,16 @@ class FilmCreateAPIView(views.APIView):
                             status=status.HTTP_401_UNAUTHORIZED)
 
 
+class DirectorOwnMovieList(generics.ListAPIView):
+    queryset = Film.objects.all()
+    serializer_class = FilmSerializer
+
+    def list(self, request, *args, **kwargs):
+        films = Film.objects.filter(director=self.request.user)
+        serializer = FilmSerializer(films, many=True)
+        return Response(prepare_success_response(serializer.data), status=status.HTTP_200_OK)
+
+
 class FilmListView(generics.ListAPIView):
     queryset = Film.objects.filter(is_publish=True)
     serializer_class = FilmSerializer

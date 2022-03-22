@@ -23,8 +23,20 @@ class FilmSerializer(serializers.ModelSerializer):
             actor_ids.append(actor_instance.pk)
         return actor_ids
 
+    def get_or_update_actor(self, actors):
+        actor_ids = []
+        for actor in actors:
+            actor_instance, create = Actor.objects.get_or_create(pk=actor.get('id'), defaults=actor)
+            actor_ids.append(actor_instance.pk)
+        return actor_ids
+
     def create(self, validated_data):
         actors = validated_data.pop('actors', [])
         film = Film.objects.create(**validated_data)
         film.actors.set(self.get_or_create_actor(actors))
         return film
+
+    def update(self, instance, validated_data):
+        actors = validated_data.pop('actors', [])
+        instance.actors.set(self.get_or_update_actor(actors))
+        return instance
