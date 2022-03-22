@@ -71,7 +71,7 @@ class Purchase(BaseEntity):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Film, on_delete=models.CASCADE, related_name='buy_films')
     quantity = models.IntegerField(default=0)
-    vat = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    vat = models.DecimalField(default=15.00, max_digits=100, decimal_places=2)
     status = models.BooleanField(default=True)
 
     PAYMENT_TYPES = (
@@ -84,4 +84,22 @@ class Purchase(BaseEntity):
     is_download = models.BooleanField(default=False)
 
     def __str__(self):
+        return self.customer.name
+
+    @property
+    def get_discount_price(self):
+        return self.item.discount_price
+
+    @property
+    def total_price(self):
+        item_price = self.item.price
+        _price = int(item_price)
+        return _price * self.quantity - self.get_discount_price
+
+    @property
+    def get_item_name(self):
+        return self.item.name
+
+    @property
+    def get_customer_name(self):
         return self.customer.name

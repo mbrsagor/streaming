@@ -22,7 +22,7 @@ class PurchaseCreateListView(views.APIView):
         try:
             purchase = Purchase.objects.filter(customer=self.request.user)
             if purchase:
-                serializer = PurchaseSerializer(purchase)
+                serializer = PurchaseSerializer(purchase, many=True)
                 return Response(prepare_success_response(serializer.data), status=status.HTTP_201_CREATED)
             return Response(prepare_error_response('No purchase history found.'))
 
