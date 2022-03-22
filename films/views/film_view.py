@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from films.models import Film
 from films.serializers.film_serializer import FilmSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
-from utils.role_util import allow_access_admin, allow_access_director, allow_access_manager
+from utils.role_util import allow_access_admin, allow_access_director
 
 
 class FilmCreateAPIView(views.APIView):
@@ -37,7 +37,7 @@ class FilmUpdateDeleteAPIView(views.APIView):
         role = self.request.user.role
         if role == allow_access_admin or role == allow_access_director:
             films = self.get_object(pk)
-            if films:
+            if films is not None:
                 serializer = FilmSerializer(films, data=request.data)
                 if serializer.is_valid():
                     serializer.save(director=self.request.user)
@@ -52,12 +52,12 @@ class FilmUpdateDeleteAPIView(views.APIView):
     def delete(self, request, pk):
         role = self.request.user.role
         if role == allow_access_admin:
-            films = self.get_object(pk)
-            if films:
-                films.delete()
+            film = self.get_object(pk)
+            if film:
+                film.delete()
                 return Response(prepare_success_response('The films has been deleted'),
                                 status=status.HTTP_404_NOT_FOUND)
-            return Response(prepare_error_response('No ID found'))
+            return Response(prepare_error_response('No ID found the film'))
         else:
             return Response(prepare_error_response('You have no permission to delete the films.'),
                             status=status.HTTP_401_UNAUTHORIZED)

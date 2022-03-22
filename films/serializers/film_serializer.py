@@ -23,10 +23,10 @@ class FilmSerializer(serializers.ModelSerializer):
             actor_ids.append(actor_instance.pk)
         return actor_ids
 
-    def get_or_update_actor(self, actors):
+    def create_or_update_actor(self, actors):
         actor_ids = []
         for actor in actors:
-            actor_instance, create = Actor.objects.get_or_create(pk=actor.get('id'), defaults=actor)
+            actor_instance, create = Actor.objects.update_or_create(pk=actor.get('id'), defaults=actor)
             actor_ids.append(actor_instance.pk)
         return actor_ids
 
@@ -38,5 +38,10 @@ class FilmSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         actors = validated_data.pop('actors', [])
-        instance.actors.set(self.get_or_update_actor(actors))
+        instance.actors.set(self.create_or_update_actor(actors))
         return instance
+
+    def validate_name(self, value):
+        if len(value) <= 3:
+            raise serializers.ValidationError("Item name should be more than 2 characters")
+        return value
