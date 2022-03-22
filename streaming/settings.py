@@ -55,6 +55,7 @@ PROJECT_APPS = [
 
 # Third party apps
 OTHER_APPS = [
+    'django_filters',
     'rest_framework',
     'rest_framework_simplejwt',
 ]

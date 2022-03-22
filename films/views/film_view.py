@@ -1,5 +1,6 @@
 from rest_framework import generics, views, status, permissions
 from rest_framework.response import Response
+from django_filters import rest_framework as filters
 
 from films.models import Film
 from films.serializers.film_serializer import FilmSerializer
@@ -64,19 +65,26 @@ class FilmUpdateDeleteAPIView(views.APIView):
 
 
 class DirectorOwnMovieList(generics.ListAPIView):
-    queryset = Film.objects.all()
     serializer_class = FilmSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('name', 'is_publish', 'price')
 
-    def list(self, request, *args, **kwargs):
-        films = Film.objects.filter(director=self.request.user)
-        serializer = FilmSerializer(films, many=True)
-        return Response(prepare_success_response(serializer.data), status=status.HTTP_200_OK)
+    # def get(self, request, *args, **kwargs):
+    #     films = Film.objects.filter(director=self.request.user)
+    #     serializer = FilmSerializer(films, many=True)
+    #     return Response(prepare_success_response(serializer.data), status=status.HTTP_200_OK)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Film.objects.filter(director=user).order_by('-id')
 
 
 class FilmListView(generics.ListAPIView):
     queryset = Film.objects.filter(is_publish=True)
     serializer_class = FilmSerializer
     permission_classes = (permissions.AllowAny,)
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('name', 'category_name', 'release_date')
 
 
 class FilmDetailsView(generics.RetrieveAPIView):
