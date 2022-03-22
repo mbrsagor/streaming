@@ -1,0 +1,1098 @@
+{
+	"info": {
+		"_postman_id": "3557a7b3-e0f5-45c6-a802-3bd94e03f8f7",
+		"name": "streaming",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Most. Kona akter\",\n    \"email\": \"kona.isah@akter.com\",\n    \"phone_number\": \"01700000000\",\n    \"role\": 4,\n    \"password\": \"user_12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"01700000000\",\n    \"password\": \"user_123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTgxNzQwLCJpYXQiOjE2NDc4NTM3NDAsImp0aSI6IjQxNmFjMzJlZDdiMDQ3MjJhYTRjZmY0MWY4NmQ1OTYxIiwidXNlcl9pZCI6Nn0.kUmw6-uF0NF7TmptlsydO1gb0PVc1Nzj-nOOEc3HYOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTgxNzQwLCJpYXQiOjE2NDc4NTM3NDAsImp0aSI6IjQxNmFjMzJlZDdiMDQ3MjJhYTRjZmY0MWY4NmQ1OTYxIiwidXNlcl9pZCI6Nn0.kUmw6-uF0NF7TmptlsydO1gb0PVc1Nzj-nOOEc3HYOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 7,\n    \"date_of_birth\": \"2022-01-01\",\n    \"address\": \"Dhaka, Bangaldesh\",\n    \"profile_picture\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/profile/7/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"profile",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTgxNzQwLCJpYXQiOjE2NDc4NTM3NDAsImp0aSI6IjQxNmFjMzJlZDdiMDQ3MjJhYTRjZmY0MWY4NmQ1OTYxIiwidXNlcl9pZCI6Nn0.kUmw6-uF0NF7TmptlsydO1gb0PVc1Nzj-nOOEc3HYOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/logout/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTgxNzQwLCJpYXQiOjE2NDc4NTM3NDAsImp0aSI6IjQxNmFjMzJlZDdiMDQ3MjJhYTRjZmY0MWY4NmQ1OTYxIiwidXNlcl9pZCI6Nn0.kUmw6-uF0NF7TmptlsydO1gb0PVc1Nzj-nOOEc3HYOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 6,\n    \"old_password\": \"user_12345\",\n    \"new_password\": \"user_123456\",\n    \"confirm_password\": \"user_123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/chanage-password/6/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"chanage-password",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "category-list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Drama 2130\",\n    \"parent\": 8,\n    \"creator\": 1,\n    \"is_active\": true,\n    \"image\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 12,\n    \"name\": \"Funny drama\",\n    \"parent\": 8,\n    \"creator\": 6,\n    \"is_active\": true,\n    \"image\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/category/12/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"category",
+								"12",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/category/24/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"category",
+								"24",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trailers",
+			"item": [
+				{
+					"name": "list of trailers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/trailers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"trailers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create trailers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Another test\",\n    \"trailer_url\": \"http://127.0.0.1:8000/admin/films/trailer/add/\",\n    \"is_publish\": true   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/trailers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"trailers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trailer-list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/trailer-list/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"trailer-list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trailer-filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/trailer-list/?name=Test",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"trailer-list",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trailers update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 99,\n    \"name\": \"Another new test\",\n    \"trailer_url\": \"http://127.0.0.1:8000/admin/films/trailer/add/\",\n    \"is_publish\": true   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/trailer/99/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"trailer",
+								"99",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trailer delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/trailer/99/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"trailer",
+								"99",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Film",
+			"item": [
+				{
+					"name": "Film list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/films/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"films",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create film",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"director\": 6,\n    \"name\": \"Hello World\",\n    \"category_name\": 11,\n    \"actors\": [\n        {\"name\": \"Bozlur Bhai\"},\n        {\"name\": \"Istiak Ohi\"}\n    ],\n    \"producers\": {\n        \"name\": \"mbr sagor bhai\",\n        \"activeity\": \"Good\"\n    },\n    \"types\": \"S\",\n    \"is_publish\": true,\n    \"release_date\": \"2022-03-21\",\n    \"description\": \"Enthusiastically integrate equity invested mindshare\",\n    \"price\": 1000.50,\n    \"discount_price\": 50,\n    \"image\": null,\n    \"video\": \"http://127.0.0.1:8000/admin/films/film/add/\",\n    \"is_watchable\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/create-film/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"create-film",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "director all films",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/my-all-films/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"my-all-films",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films -details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/films/new-fields/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"films",
+								"new-fields",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 49,\n    \"director\": 6,\n    \"name\": \"The most welcome 2\",\n    \"category_name\": 11,\n    \"actors\": [\n        {\"name\": \"Bozlur Bhai\"},\n        {\"name\": \"Istiak Ohi\"}\n    ],\n    \"producers\": {\n        \"name\": \"Meg Babu\",\n        \"activeity\": \"Good\"\n    },\n    \"types\": \"S\",\n    \"is_publish\": true,\n    \"release_date\": \"2022-03-21\",\n    \"description\": \"Enthusiastically integrate equity invested mindshare\",\n    \"price\": 1000.50,\n    \"discount_price\": 50,\n    \"image\": null,\n    \"video\": \"http://127.0.0.1:8000/admin/films/film/add/\",\n    \"is_watchable\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/film/49/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"film",
+								"49",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films-delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/film/37/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"film",
+								"37",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "films-filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/films/?name=The speed&category_name=13&release_date=2022-03-21",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"films",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "The speed"
+								},
+								{
+									"key": "category_name",
+									"value": "13"
+								},
+								{
+									"key": "release_date",
+									"value": "2022-03-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "director filmd filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/my-all-films/?name=hello dev&is_publish=true&price=120",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"my-all-films",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "hello dev"
+								},
+								{
+									"key": "is_publish",
+									"value": "true"
+								},
+								{
+									"key": "price",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "purchase",
+			"item": [
+				{
+					"name": "purchase list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/purchase/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"purchase",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"item\": 97,\n    \"quantity\": 3,\n    \"vat\": \"0.00\",\n    \"status\": false,\n    \"payment\": \"T1\",\n    \"is_download\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/purchase/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"purchase",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase-status update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 103,\n    \"status\": true,\n    \"is_download\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/purchase/103/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"purchase",
+								"103",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5NTkyMjQyLCJpYXQiOjE2NDc4NjQyNDIsImp0aSI6Ijg3ZjkwNTA0Y2E4NzRmMDU4YTk3ZWEzYjUxODVhMTdjIiwidXNlcl9pZCI6Nn0.agYIrGSm5_oLnDRe4HRJyhECxh18dWpOIC5GmDPRnE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/films/purchase/detail/103/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"films",
+								"purchase",
+								"detail",
+								"103",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
