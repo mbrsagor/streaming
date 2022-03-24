@@ -77,9 +77,12 @@ class PasswordResetView(views.APIView):
         return obj
 
     def post(self, request, *args, **kwargs):
-        user = self.get_object()
-        user.send_reset_password_email()
-        return Response({}, status=status.HTTP_200_OK)
+        try:
+            user = self.get_object()
+            user.send_reset_password_email()
+            return Response({}, status=status.HTTP_200_OK)
+        except Exception as ex:
+            return Response(prepare_error_response(str(ex)))
 
 
 class PasswordResetConfirmView(views.APIView):
