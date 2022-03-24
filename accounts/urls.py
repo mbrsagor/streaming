@@ -14,4 +14,5 @@ urlpatterns = [
     path('password-reset-confirm/', views.PasswordResetConfirmView.as_view()),
     path('profile/', views.ProfileAPIView.as_view()),
     path('profile/<pk>/', views.ProfileUpdateDeleteView.as_view()),
+    path('message/', views.SendMessage.as_view()),
 ]

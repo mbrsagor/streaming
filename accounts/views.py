@@ -1,11 +1,25 @@
 from rest_framework import views, generics, status, permissions
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
+from django.core.mail import send_mail
 
 from .models import User, Profile
 from .serializers import UserRegistrationSerializer, UserSerializer, ProfileSerializer, ResetPasswordSerializer, \
     PasswordChangeSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
+
+
+class SendMessage(views.APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def get(self, request):
+        try:
+            message = send_mail('Subject here', 'Here is the message.', 'x@gmail.com',
+                                ['xyz.cse@gmail.com'],
+                                fail_silently=False)
+            return Response(message, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(str(e))
 
 
 class UserRegistrationAPIView(views.APIView):
