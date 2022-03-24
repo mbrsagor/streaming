@@ -1,8 +1,10 @@
 from rest_framework import views, generics, status, permissions
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from .models import User, Profile
-from .serializers import UserRegistrationSerializer, UserSerializer, ProfileSerializer, PasswordChangeSerializer
+from .serializers import UserRegistrationSerializer, UserSerializer, ProfileSerializer, ResetPasswordSerializer, \
+    PasswordChangeSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
 
 
@@ -63,6 +65,32 @@ class ProfileUpdateDeleteView(views.APIView):
             profile.delete()
             return Response(prepare_success_response('Profile has been deleted'), status=status.HTTP_200_OK)
         return Response(prepare_error_response('No profile found for this ID '), status=status.HTTP_400_BAD_REQUEST)
+
+
+class PasswordResetView(views.APIView):
+    permission_classes = (permissions.AllowAny,)
+    queryset = User.objects.all()
+
+    def get_object(self):
+        email = self.request.data.get('email')
+        obj = get_object_or_404(self.queryset, email=email)
+        return obj
+
+    def post(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.send_reset_password_email()
+        return Response({}, status=status.HTTP_200_OK)
+
+
+class PasswordResetConfirmView(views.APIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = ResetPasswordSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = ResetPasswordSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
+        return Response(prepare_success_response('Password updated successfully.'), status=status.HTTP_200_OK)
 
 
 class ChangePasswordView(generics.UpdateAPIView):

@@ -82,3 +82,13 @@ class PasswordChangeSerializer(serializers.ModelSerializer):
         instance.set_password(validated_data['new_password'])
         instance.save()
         return instance
+
+
+class ResetPasswordSerializer(serializers.ModelSerializer):
+    id = serializers.CharField()
+    token = serializers.CharField()
+
+    class Meta:
+        model = User
+        fields = ('id', 'token', 'password',)
+        extra_kwargs = {'password': {'write_only': True}}
