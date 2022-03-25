@@ -4,7 +4,7 @@
 ### Dependencies
 
 - Python 3.8
-- PostgreSQL 12.8
+- PostgreSQL 13
 
 
 ### Create Database
@@ -44,6 +44,8 @@ source env/bin/activate
 
 ```bash
 pip install -r requirements.txt
+./manage.py makemigrations accounts
+./manage.py migrate accounts
 ./manage.py migrate
 ./manage.py runserver
 ./manage.py createsuperuser
@@ -55,9 +57,12 @@ Open your terminal then run the command for `docker`
 ```bash
 docker compose up
 ```
+
 If you want to migrate or something similar please follow below commands:
 ```bash
 docker-compose exec backend sh
+python manage.py makemigrations accounts
+python manage.py migrate accounts
 python manage.py migrate
 python manage.py makemigrations
 python manage.py createsuperuser
