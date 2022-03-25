@@ -26,6 +26,7 @@ Create a python virtual environment:
 
 ```bash/zsh
 virtualenv venv --python=python3.8
+pip install psycopg2-binary
 ```
 
 Activate it:
@@ -57,7 +58,6 @@ Open your terminal then run the command for `docker`
 ```bash
 docker compose up
 ```
-
 If you want to migrate or something similar please follow below commands:
 ```bash
 docker-compose exec backend sh
