@@ -28,6 +28,7 @@ class Actor(BaseEntity):
 class Trailer(BaseEntity):
     name = models.CharField(max_length=150)
     trailer_url = models.URLField(max_length=250)
+    image = models.ImageField(upload_to='trailer', blank=True, null=True)
     is_publish = models.BooleanField(default=True)
 
     def __str__(self):

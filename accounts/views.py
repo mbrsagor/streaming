@@ -104,10 +104,13 @@ class PasswordResetConfirmView(views.APIView):
     serializer_class = ResetPasswordSerializer
 
     def post(self, request, *args, **kwargs):
-        serializer = ResetPasswordSerializer(data=request.data)
-        if not serializer.is_valid():
-            return Response(prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
-        return Response(prepare_success_response('Password updated successfully.'), status=status.HTTP_200_OK)
+        try:
+            serializer = ResetPasswordSerializer(data=request.data)
+            if not serializer.is_valid():
+                return Response(prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
+            return Response(prepare_success_response('Password updated successfully.'), status=status.HTTP_200_OK)
+        except Exception as ex:
+            return Response(prepare_error_response(str(ex)))
 
 
 class ChangePasswordView(generics.UpdateAPIView):

@@ -10,6 +10,13 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 
-admin.site.register(Trailer)
+
+class TrailerAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'trailer_url', 'is_publish']
+    list_display_links = ['id', 'name']
+    search_fields = ['name', 'is_publish']
+
+
+admin.site.register(Trailer, TrailerAdmin)
 admin.site.register(Film)
 admin.site.register(Purchase)
