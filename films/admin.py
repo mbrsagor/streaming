@@ -18,5 +18,21 @@ class TrailerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Trailer, TrailerAdmin)
-admin.site.register(Film)
-admin.site.register(Purchase)
+
+
+class FilmAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'category_name', 'director', 'release_date', 'price', 'created_at']
+    list_display_links = ['id', 'name']
+    search_fields = ['name', 'price']
+
+
+admin.site.register(Film, FilmAdmin)
+
+
+class PurchaseAdmin(admin.ModelAdmin):
+    list_display = ['id', 'item', 'customer', 'quantity', 'payment', 'status', 'created_at']
+    list_display_links = ['id', 'item']
+    search_fields = ['item', 'status']
+
+
+admin.site.register(Purchase, PurchaseAdmin)
