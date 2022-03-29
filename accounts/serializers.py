@@ -57,9 +57,12 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class PasswordChangeSerializer(serializers.ModelSerializer):
-    old_password = serializers.CharField(write_only=True, required=True)
-    new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
-    confirm_password = serializers.CharField(write_only=True, required=True)
+    old_password = serializers.CharField(write_only=True, required=True,
+                                         style={'input_type': 'password', 'placeholder': 'Old Password'})
+    new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password],
+                                         style={'input_type': 'password', 'placeholder': 'New Password'})
+    confirm_password = serializers.CharField(write_only=True, required=True,
+                                             style={'input_type': 'password', 'placeholder': 'Confirm Password'})
 
     class Meta:
         model = User

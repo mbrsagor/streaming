@@ -114,6 +114,7 @@ class PasswordResetConfirmView(views.APIView):
 
 
 class ChangePasswordView(generics.UpdateAPIView):
+    # permission_classes = (permissions.AllowAny,)
     queryset = User.objects.all()
     serializer_class = PasswordChangeSerializer
 
