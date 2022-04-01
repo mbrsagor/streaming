@@ -17,6 +17,7 @@ class CategorySerializer(serializers.ModelSerializer):
     def get_parent(self, obj):
         return str(obj.parent)
 
+    # validate name
     def validate_name(self, value):
         if len(value) <= 2:
             raise serializers.ValidationError("Name field is more than al lest one char")

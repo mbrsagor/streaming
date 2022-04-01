@@ -32,12 +32,14 @@ class FilmSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         actors = validated_data.pop('actors', [])
+        # Create method call here
         film = Film.objects.create(**validated_data)
         film.actors.set(self.get_or_create_actor(actors))
         return film
 
     def update(self, instance, validated_data):
         actors = validated_data.pop('actors', [])
+        # Update method call here
         instance.actors.set(self.create_or_update_actor(actors))
         return instance
 

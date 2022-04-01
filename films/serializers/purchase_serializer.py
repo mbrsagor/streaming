@@ -15,6 +15,10 @@ class PurchaseSerializer(serializers.ModelSerializer):
 
 
 class PurchaseUpdateSerializer(serializers.ModelSerializer):
+    """
+    :param: When admin will update below the fields will be updated.
+     -Status, is_download, updated_at
+    """
     class Meta:
         model = Purchase
         read_only_fields = ('customer',)
