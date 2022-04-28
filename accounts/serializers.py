@@ -57,6 +57,11 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class PasswordChangeSerializer(serializers.ModelSerializer):
+    """
+    User will change password.
+    params: given `Old password`, then match `new password` and `confirm password`
+    """
+
     old_password = serializers.CharField(write_only=True, required=True,
                                          style={'input_type': 'password', 'placeholder': 'Old Password'})
     new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password],
@@ -88,6 +93,10 @@ class PasswordChangeSerializer(serializers.ModelSerializer):
 
 
 class ResetPasswordSerializer(serializers.ModelSerializer):
+    """
+    Reset or Forgot password.
+    When user will forgot password after that the serializer will call.
+    """
     id = serializers.CharField()
     token = serializers.CharField()
 

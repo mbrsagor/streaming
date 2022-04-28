@@ -67,3 +67,5 @@ python manage.py migrate
 python manage.py makemigrations
 python manage.py createsuperuser
 ```
+
+## Happy coding :wink:
