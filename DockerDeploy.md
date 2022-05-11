@@ -10,11 +10,11 @@ Requirements:
 Follow these steps:
 - Copy `example.env.toml` file to `.env.toml`
 - In`.env.toml` file change `SQL_HOST="db"`
-- Make a file name `.env.docker` add add
+- Make a file name `.env.docker` add
 ```sh
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres
-POSTGRES_DB=streaming
+POSTGRES_USER=db_user
+POSTGRES_PASSWORD=db_password
+POSTGRES_DB=db_name
 ```
 
 ## Up and Run
