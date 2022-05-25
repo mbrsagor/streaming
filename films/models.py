@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import JSONField
 from django.utils.text import slugify
 
 from accounts.models import BaseEntity, User
@@ -17,6 +16,10 @@ class Category(BaseEntity):
 
     def creator_name(self):
         return self.creator.name
+
+    @property
+    def parent_category(self):
+        return self.parent.name
 
 
 class Actor(BaseEntity):
@@ -41,7 +44,7 @@ class Film(BaseEntity):
     slug = models.SlugField(unique=True, blank=True, null=True)
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='filmsCategory')
     actors = models.ManyToManyField(Actor, related_name='movieActors', blank=True)
-    producers = JSONField(blank=True, null=True, default=None)
+    producers = models.JSONField(blank=True, null=True, default=None)
 
     Type = (
         ('S', 'Small'),
@@ -66,6 +69,10 @@ class Film(BaseEntity):
         value = self.name
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
+
+    @property
+    def get_category_name(self):
+        return self.category_name.name
 
 
 class Purchase(BaseEntity):
