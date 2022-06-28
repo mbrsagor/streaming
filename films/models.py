@@ -39,19 +39,18 @@ class Trailer(BaseEntity):
 
 
 class Film(BaseEntity):
-    director = models.ForeignKey(User, on_delete=models.CASCADE, related_name='filmsDirector')
-    name = models.CharField(max_length=120)
-    slug = models.SlugField(unique=True, blank=True, null=True)
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='filmsCategory')
-    actors = models.ManyToManyField(Actor, related_name='movieActors', blank=True)
-    producers = models.JSONField(blank=True, null=True, default=None)
-
     Type = (
         ('S', 'Small'),
         ('M', 'Medium'),
         ('L', 'Large'),
     )
 
+    director = models.ForeignKey(User, on_delete=models.CASCADE, related_name='filmsDirector')
+    name = models.CharField(max_length=120)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='filmsCategory')
+    actors = models.ManyToManyField(Actor, related_name='movieActors', blank=True)
+    producers = models.JSONField(blank=True, null=True, default=None)
     types = models.CharField(max_length=1, choices=Type)
     is_publish = models.BooleanField(default=False)
     release_date = models.DateTimeField()
