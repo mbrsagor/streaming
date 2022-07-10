@@ -49,7 +49,7 @@ class Profile(BaseEntity):
         if self.profile_picture and hasattr(self.profile_picture, 'url'):
             return self.profile_picture.url
         else:
-            return "/static/images/avatar.jpg"
+            return "https://static.productionready.io/images/smiley-cyrus.jpg"
 
 
 def create_user_profile(sender, instance, created, **kwargs):

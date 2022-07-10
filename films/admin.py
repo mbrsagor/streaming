@@ -21,7 +21,7 @@ admin.site.register(Trailer, TrailerAdmin)
 
 
 class FilmAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'category_name', 'director', 'release_date', 'price', 'created_at']
+    list_display = ['id', 'name', 'category', 'director', 'release_date', 'price', 'created_at']
     list_display_links = ['id', 'name']
     search_fields = ['name', 'price']
 

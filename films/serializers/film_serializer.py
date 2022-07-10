@@ -11,7 +11,7 @@ class FilmSerializer(serializers.ModelSerializer):
         model = Film
         read_only_fields = ('director',)
         fields = [
-            'id', 'director', 'name', 'category_name', 'actors', 'producers', 'types',
+            'id', 'director', 'name', 'category', 'actors', 'producers', 'types',
             'is_publish', 'release_date', 'description', 'price', 'discount_price',
             'image', 'video', 'is_watchable', 'slug', 'created_at', 'updated_at'
         ]
