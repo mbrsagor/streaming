@@ -15,8 +15,8 @@ urlpatterns = [
     path('trailer/<pk>/', trailer_view.TrailerUpdateDeleteAPIView.as_view()),
     path('trailer/detail/<pk>/', trailer_view.TrailerDetailsView.as_view()),
     # Film
-    path('create-film/', film_view.FilmCreateAPIView.as_view()),
     path('films/', film_view.FilmListView.as_view()),
+    path('create-film/', film_view.FilmCreateAPIView.as_view()),
     path('my-all-films/', film_view.DirectorOwnMovieList.as_view()),
     path('films/<slug>/', film_view.FilmDetailsView.as_view()),
     path('film/<pk>/', film_view.FilmUpdateDeleteAPIView.as_view()),
