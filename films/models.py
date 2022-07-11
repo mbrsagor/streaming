@@ -70,7 +70,7 @@ class Film(BaseEntity):
         super().save(*args, **kwargs)
 
     @property
-    def get_category_name(self):
+    def category_name(self):
         return self.category.name
 
 

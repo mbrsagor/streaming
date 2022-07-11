@@ -69,10 +69,12 @@ class DirectorOwnMovieList(generics.ListAPIView):
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_fields = ('name', 'is_publish', 'price')
 
-    # def get(self, request, *args, **kwargs):
-    #     films = Film.objects.filter(director=self.request.user)
-    #     serializer = FilmSerializer(films, many=True)
-    #     return Response(prepare_success_response(serializer.data), status=status.HTTP_200_OK)
+    """
+        def get(self, request, *args, **kwargs):
+        films = Film.objects.filter(director=self.request.user)
+        serializer = FilmSerializer(films, many=True)
+        return Response(prepare_success_response(serializer.data), status=status.HTTP_200_OK)
+    """
 
     def get_queryset(self):
         user = self.request.user
