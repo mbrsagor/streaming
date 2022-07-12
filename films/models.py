@@ -108,3 +108,7 @@ class Purchase(BaseEntity):
     @property
     def get_customer_name(self):
         return self.customer.name
+
+
+class Notification(BaseEntity):
+    pass
