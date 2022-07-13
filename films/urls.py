@@ -4,6 +4,7 @@ from films.views import category_view
 from films.views import trailer_view
 from films.views import film_view
 from films.views import purchase_view
+from films.views import notification_view
 
 urlpatterns = [
     # Category
@@ -24,4 +25,6 @@ urlpatterns = [
     path('purchase/', purchase_view.PurchaseCreateListView.as_view()),
     path('purchase/<pk>/', purchase_view.PurchaseUpdateAPIView.as_view()),
     path('purchase/detail/<pk>/', purchase_view.PurchaseDetailsView.as_view()),
+    # Notification
+    path('notification/', notification_view.NotificationCreateListView.as_view()),
 ]

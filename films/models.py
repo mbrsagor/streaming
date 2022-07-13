@@ -111,4 +111,10 @@ class Purchase(BaseEntity):
 
 
 class Notification(BaseEntity):
-    pass
+    title = models.CharField(max_length=100)
+    is_publish = models.BooleanField(default=True)
+    details = models.TextField(blank=True, null=True)
+    picture = models.ImageField(upload_to='notification/%m/%d', blank=True, null=True)
+
+    def __str__(self): return self.title
+

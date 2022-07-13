@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Trailer, Film, Purchase
+from .models import Category, Trailer, Film, Purchase, Notification
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -36,3 +36,5 @@ class PurchaseAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Purchase, PurchaseAdmin)
+
+admin.site.register(Notification)
