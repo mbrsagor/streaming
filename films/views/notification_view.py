@@ -9,6 +9,7 @@ from utils.response import prepare_create_success_response, prepare_error_respon
 class NotificationCreateListView(generics.CreateAPIView, generics.ListAPIView):
     serializer_class = NotificationSerializer
     queryset = Notification.objects.filter(is_publish=True)
+    permission_classes = (permissions.IsAdminUser, permissions.IsAuthenticated)
 
     def post(self, request, *args, **kwargs):
         try:

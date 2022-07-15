@@ -58,4 +58,7 @@ class PurchaseDetailsView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Purchase.objects.filter(customer=user)
+        if user is not None:
+            return Purchase.objects.filter(customer=user)
+        else:
+            return Response(prepare_error_response('something went to wrong'), status=status.HTTP_404_NOT_FOUND)
