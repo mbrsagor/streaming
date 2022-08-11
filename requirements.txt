@@ -1,7 +1,7 @@
 asgiref==3.5.0
 backports.zoneinfo==0.2.1
 binary==1.0.0
-Django==4.0.6
+Django==4.0.7
 django-cors-headers==3.11.0
 django-environ==0.4.5
 django-filter==2.4.0
