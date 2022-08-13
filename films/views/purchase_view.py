@@ -2,9 +2,10 @@ from rest_framework import views, status, generics
 from rest_framework.response import Response
 
 from films.models import Purchase
+from utils.message import PURCHASE, PERMISSION, WARNING
+from utils.role_util import allow_access_admin, allow_access_manager
 from films.serializers.purchase_serializer import PurchaseSerializer, PurchaseUpdateSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
-from utils.role_util import allow_access_admin, allow_access_manager
 
 
 class PurchaseCreateListView(views.APIView):
@@ -25,7 +26,7 @@ class PurchaseCreateListView(views.APIView):
             if purchase:
                 serializer = PurchaseSerializer(purchase, many=True)
                 return Response(prepare_success_response(serializer.data), status=status.HTTP_201_CREATED)
-            return Response(prepare_error_response('No purchase history found.'))
+            return Response(prepare_error_response(PURCHASE))
 
         except Exception as e:
             return Response(prepare_error_response(str(e)))
@@ -47,7 +48,7 @@ class PurchaseUpdateAPIView(views.APIView):
                     serializer.save(customer=self.request.user)
                     return Response(prepare_create_success_response(serializer.data), status=status.HTTP_201_CREATED)
                 return Response(prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
-            return Response(prepare_error_response('You have no permission to update.'),
+            return Response(prepare_error_response(PERMISSION),
                             status=status.HTTP_401_UNAUTHORIZED)
         except Exception as e:
             return Response(prepare_error_response(str(e)))
@@ -61,4 +62,4 @@ class PurchaseDetailsView(generics.RetrieveAPIView):
         if user is not None:
             return Purchase.objects.filter(customer=user)
         else:
-            return Response(prepare_error_response('something went to wrong'), status=status.HTTP_404_NOT_FOUND)
+            return Response(prepare_error_response(WARNING), status=status.HTTP_404_NOT_FOUND)

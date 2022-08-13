@@ -1,0 +1,5 @@
+PERMISSION = 'You no permission.'
+NOID = 'Not found for this ID.'
+DELETED = 'Deleted successfully done.'
+PURCHASE = 'No purchase history found.'
+WARNING = 'something went to wrong'

@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from django_filters import rest_framework as filters
 
 from films.models import Trailer
+from utils.message import PERMISSION, NOID, DELETED
 from films.serializers.trailer_serializer import TrailerSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
 from utils.role_util import allow_access_admin, allow_access_manager
@@ -24,7 +25,7 @@ class TrailerCreateListView(generics.ListCreateAPIView):
             except Exception as e:
                 return Response(prepare_error_response(str(e)))
         else:
-            return Response(prepare_error_response('You have no permission to create trailer.'))
+            return Response(prepare_error_response(PERMISSION))
 
 
 class TrailerUpdateDeleteAPIView(views.APIView):
@@ -46,9 +47,9 @@ class TrailerUpdateDeleteAPIView(views.APIView):
                     return Response(prepare_create_success_response(serializer.data), status=status.HTTP_201_CREATED)
                 return Response(prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
             else:
-                return Response(prepare_error_response('No ID found the trailer'), status=status.HTTP_200_OK)
+                return Response(prepare_error_response(NOID), status=status.HTTP_200_OK)
         else:
-            return Response(prepare_error_response('You have no permission to update the trailer'),
+            return Response(prepare_error_response(PERMISSION),
                             status=status.HTTP_401_UNAUTHORIZED)
 
     def delete(self, request, pk):
@@ -57,10 +58,10 @@ class TrailerUpdateDeleteAPIView(views.APIView):
             trailer = self.get_object(pk)
             if trailer is not None:
                 trailer.delete()
-                return Response(prepare_success_response('Trailer deleted successfully.'), status=status.HTTP_200_OK)
-            return Response(prepare_error_response('No ID found the trailer'), status=status.HTTP_200_OK)
+                return Response(prepare_success_response(DELETED), status=status.HTTP_200_OK)
+            return Response(prepare_error_response(NOID), status=status.HTTP_200_OK)
         else:
-            return Response(prepare_error_response('You have no permission to delete the trailer'),
+            return Response(prepare_error_response(PERMISSION),
                             status=status.HTTP_401_UNAUTHORIZED)
 
 

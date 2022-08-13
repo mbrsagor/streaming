@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from django_filters import rest_framework as filters
 
 from films.models import Film
+from utils.message import PERMISSION, NOID, DELETED
 from films.serializers.film_serializer import FilmSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
 from utils.role_util import allow_access_admin, allow_access_director
@@ -22,7 +23,7 @@ class FilmCreateAPIView(views.APIView):
             except Exception as e:
                 return Response(prepare_error_response(str(e)))
         else:
-            return Response(prepare_error_response('You no permission to upload film.'),
+            return Response(prepare_error_response(PERMISSION),
                             status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -45,9 +46,9 @@ class FilmUpdateDeleteAPIView(views.APIView):
                     return Response(prepare_create_success_response(serializer.data), status=status.HTTP_201_CREATED)
                 return Response(prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
             else:
-                return Response(prepare_error_response('No ID the found the films'))
+                return Response(prepare_error_response(NOID))
         else:
-            return Response(prepare_error_response('You have no permission to update the films.'),
+            return Response(prepare_error_response(PERMISSION),
                             status=status.HTTP_401_UNAUTHORIZED)
 
     def delete(self, request, pk):
@@ -56,11 +57,11 @@ class FilmUpdateDeleteAPIView(views.APIView):
             film = self.get_object(pk)
             if film:
                 film.delete()
-                return Response(prepare_success_response('The films has been deleted'),
+                return Response(prepare_success_response(DELETED),
                                 status=status.HTTP_404_NOT_FOUND)
-            return Response(prepare_error_response('No ID found the film'))
+            return Response(prepare_error_response(NOID))
         else:
-            return Response(prepare_error_response('You have no permission to delete the films.'),
+            return Response(prepare_error_response(PERMISSION),
                             status=status.HTTP_401_UNAUTHORIZED)
 
 
