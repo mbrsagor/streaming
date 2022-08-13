@@ -5,8 +5,8 @@ from django_filters import rest_framework as filters
 from films.models import Trailer
 from utils.message import PERMISSION, NOID, DELETED
 from films.serializers.trailer_serializer import TrailerSerializer
-from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
 from utils.role_util import allow_access_admin, allow_access_manager
+from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
 
 
 class TrailerCreateListView(generics.ListCreateAPIView):
