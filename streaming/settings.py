@@ -51,6 +51,7 @@ DEFAULT_APPS = [
 PROJECT_APPS = [
     'accounts',
     'films',
+    'blog',
 ]
 
 # Third party apps
@@ -176,14 +177,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:8000"
 ]
-
-# Twilio SendGrid
-SENDGRID_API_KEY = env('API_KEY')
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = SENDGRID_API_KEY  # this is exactly the value 'apikey'
-EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
 
 # Rest framework settings
 REST_FRAMEWORK = {
