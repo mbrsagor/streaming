@@ -1,8 +1,7 @@
 from django.db import models
 from datetime import date
 
-
-from accounts.models import BaseEntity, User
+from accounts.models import BaseEntity
 
 
 class Blog(BaseEntity):
@@ -34,3 +33,7 @@ class Entry(BaseEntity):
 
     def __str__(self):
         return self.headline
+
+    @property
+    def blog_name(self):
+        return self.blog.name

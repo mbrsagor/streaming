@@ -4,11 +4,22 @@ from rest_framework.response import Response
 from utils.response import prepare_create_success_response, prepare_error_response
 from blog.serializers.blog_serializer import BlogSerializer, AuthorSerializer
 from utils.role_util import allow_access_admin, allow_access_director
-from utils.message import PERMISSION, NOID, DELETED
+from utils.message import PERMISSION
 from blog.models import Blog, Author
 
 
 class BlogCreateListAPIView(generics.ListCreateAPIView):
+
+    """
+    Name: Blog API.
+    Endpoint: /api/blog/create-list-blog/
+    HTTP verb: post/get
+    body = {
+        "name": "new blog",
+        "tagline: "This is a tagline"
+    }
+    """
+
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
 
@@ -24,6 +35,16 @@ class BlogCreateListAPIView(generics.ListCreateAPIView):
 
 
 class AuthorCreateListView(generics.ListCreateAPIView):
+    """
+       Name: Author API.
+       Endpoint: /api/blog/author/
+       HTTP verb: post/get
+       body = {
+           "name": "Bozlur Rosid Sagor",
+           "email: "mbrsagor@gmail.com"
+       }
+       """
+
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
