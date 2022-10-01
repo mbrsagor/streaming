@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include('accounts.urls')),
     path('api/films/', include('films.urls')),
+    path('api/payment/', include('payment.urls')),
 ]
 
 if settings.DEBUG:
