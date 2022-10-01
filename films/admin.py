@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Trailer, Film, Purchase, Notification
+from .models import Category, Trailer, Film, Notification
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -27,14 +27,5 @@ class FilmAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Film, FilmAdmin)
-
-
-class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ['id', 'item', 'customer', 'quantity', 'payment', 'status', 'created_at']
-    list_display_links = ['id', 'item']
-    search_fields = ['item', 'status']
-
-
-admin.site.register(Purchase, PurchaseAdmin)
 
 admin.site.register(Notification)

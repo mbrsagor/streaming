@@ -1,10 +1,10 @@
 from rest_framework import views, status, generics
 from rest_framework.response import Response
 
-from films.models import Purchase
+from payment.models import Purchase
 from utils.message import PURCHASE, PERMISSION, WARNING
 from utils.role_util import allow_access_admin, allow_access_manager
-from films.serializers.purchase_serializer import PurchaseSerializer, PurchaseUpdateSerializer
+from payment.serializers.purchase_serializer import PurchaseSerializer, PurchaseUpdateSerializer
 from utils.response import prepare_create_success_response, prepare_success_response, prepare_error_response
 
 

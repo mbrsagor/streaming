@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from films.models import Purchase
+from payment.models import Purchase
 
 
 class PurchaseSerializer(serializers.ModelSerializer):

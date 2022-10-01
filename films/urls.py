@@ -3,7 +3,6 @@ from django.urls import path
 from films.views import category_view
 from films.views import trailer_view
 from films.views import film_view
-from films.views import purchase_view
 from films.views import notification_view
 
 urlpatterns = [
@@ -21,10 +20,6 @@ urlpatterns = [
     path('my-all-films/', film_view.DirectorOwnMovieList.as_view()),
     path('films/<slug>/', film_view.FilmDetailsView.as_view()),
     path('film/<pk>/', film_view.FilmUpdateDeleteAPIView.as_view()),
-    # purchase
-    path('purchase/', purchase_view.PurchaseCreateListView.as_view()),
-    path('purchase/<pk>/', purchase_view.PurchaseUpdateAPIView.as_view()),
-    path('purchase/detail/<pk>/', purchase_view.PurchaseDetailsView.as_view()),
     # Notification
     path('notification/', notification_view.NotificationCreateListView.as_view()),
 ]
