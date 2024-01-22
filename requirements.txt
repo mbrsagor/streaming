@@ -8,7 +8,7 @@ django-filter==2.4.0
 django-sendgrid-v5==1.2.0
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.1.0
-Pillow==10.0.1
+Pillow==10.2.0
 psycopg==3.0.10
 psycopg2-binary==2.9.3
 pycodestyle==2.6.0
