@@ -45,25 +45,17 @@ class CustomPagination(pagination.PageNumberPagination):
     def get_paginated_response(self, data):
         next_page = self.get_next_link()
         prev_page = self.get_previous_link()
-        # print(f"Next page: {next_page}")
-        # print(f"Prev page: {prev_page}")
         if next_page is None and prev_page is None:
             return response.Response({
-                # 'next': 0,
-                # 'previous': 0,
-                # 'count': self.page.paginator.count,
                 "message": "Data successfully returned",
                 'status': True,
-                'issue': data,
+                'data': data,
             })
         else:
             return response.Response({
-                # 'next': self.get_next_link(),
-                # 'previous': self.get_previous_link(),
-                # 'count': self.page.paginator.count,
                 "message": "Data successfully returned",
                 'status': True,
-                'issue': data,
+                'data': data
             })
 
 
