@@ -29,7 +29,7 @@ class CustomPagination(pagination.PageNumberPagination):
         except Exception as exc:
             # Here it is
             msg = {
-                "status": False,
+                "status": 'fail',
                 "message": "Page out of range"
             }
             raise NotFound(msg)

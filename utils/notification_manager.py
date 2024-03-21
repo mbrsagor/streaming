@@ -43,4 +43,3 @@ def send_notification_single_user(device_token, title, message, icon=None, pictu
 
     response = requests.post(url, json=body, headers=headers)
     return response
-
