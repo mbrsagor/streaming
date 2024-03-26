@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
 
-from accounts.models import BaseEntity, User
+from accounts.models import Timestamp, User
 
 
-class Category(BaseEntity):
+class Category(Timestamp):
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=50, unique=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='categoryCreator')
@@ -22,13 +22,13 @@ class Category(BaseEntity):
         return self.parent.name
 
 
-class Actor(BaseEntity):
+class Actor(Timestamp):
     name = models.CharField(max_length=35)
 
     def __str__(self): return self.name
 
 
-class Trailer(BaseEntity):
+class Trailer(Timestamp):
     name = models.CharField(max_length=150)
     trailer_url = models.URLField(max_length=250)
     is_publish = models.BooleanField(default=True)
@@ -38,7 +38,7 @@ class Trailer(BaseEntity):
         return self.name
 
 
-class Film(BaseEntity):
+class Film(Timestamp):
     Type = (
         ('S', 'Small'),
         ('M', 'Medium'),
@@ -74,7 +74,7 @@ class Film(BaseEntity):
         return self.category.name
 
 
-class Notification(BaseEntity):
+class Notification(Timestamp):
     title = models.CharField(max_length=100)
     is_publish = models.BooleanField(default=True)
     details = models.TextField(blank=True, null=True)

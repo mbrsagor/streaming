@@ -7,7 +7,7 @@ from utils.role_util import RoleEnum
 from .manager import UserManager
 
 
-class BaseEntity(models.Model):
+class Timestamp(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -15,7 +15,7 @@ class BaseEntity(models.Model):
         abstract = True
 
 
-class User(AbstractUser, BaseEntity):
+class User(AbstractUser, Timestamp):
     username = None
     name = models.CharField(max_length=50)
     email = models.EmailField(verbose_name="email", max_length=60, unique=True, blank=True)
@@ -30,7 +30,7 @@ class User(AbstractUser, BaseEntity):
         return self.name
 
 
-class Profile(BaseEntity):
+class Profile(Timestamp):
     auth = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     profile_picture = models.ImageField(upload_to='profile/%y/%m', blank=True, null=True)
     date_of_birth = models.DateField(default=datetime.now)

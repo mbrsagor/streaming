@@ -1,10 +1,10 @@
 from django.db import models
 
 from films.models import Film
-from accounts.models import BaseEntity, User
+from accounts.models import Timestamp, User
 
 
-class Purchase(BaseEntity):
+class Purchase(Timestamp):
     quantity = models.IntegerField(default=0)
     status = models.BooleanField(default=True)
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
