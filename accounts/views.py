@@ -125,3 +125,31 @@ class LogoutAPIView(views.APIView):
         response.delete_cookie('jwt')
         response.data = prepare_success_response('User logout successfully')
         return response
+
+
+"""
+class CreateUserAPIView(views.APIView):
+    """
+    name: Create a new user API
+    Desc: Store owner can create new user for manage their own account.
+    Method: POST
+    URL: /api/auth/create-user/
+    :param
+    """
+
+    def post(self, request):
+        try:
+            serializer = auth_serializer.CreateUserSerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                # Add menu for the user
+                menus = request.data['menus']
+                user_id = serializer.data['id']
+                add_user_menu = MenuAddToUser.objects.create(user_id=user_id)
+                add_user_menu.menus.add(*menus)
+                return Response(response.prepare_success_response(messages.CREATE_USER), status=status.HTTP_201_CREATED)
+            return Response(response.prepare_error_response(serializer.errors), status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response(response.prepare_error_response(str(e)), status=status.HTTP_400_BAD_REQUEST)
+
+"""
