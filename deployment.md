@@ -1,4 +1,4 @@
-# PowurHouz
+# Streaming
 
 > If you want to deploy the application cloud please follow the below instructions:
 
@@ -19,7 +19,7 @@ CREATE USER dev WITH PASSWORD '12345';
 ALTER ROLE dev SET client_encoding TO 'utf8';
 ALTER ROLE dev SET default_transaction_isolation TO 'read committed';
 ALTER ROLE dev SET timezone TO 'UTC';
-GRANT ALL PRIVILEGES ON DATABASE powurhouz TO dev;
+GRANT ALL PRIVILEGES ON DATABASE streaming TO dev;
 \q
 ```
 
@@ -93,7 +93,7 @@ After=network.target
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/streaming
-ExecStart=/home/ubuntu/powurhouz/venv/bin/gunicorn \
+ExecStart=/home/ubuntu/streaming/venv/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
