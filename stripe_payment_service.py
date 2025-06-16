@@ -1,6 +1,6 @@
 import requests
 from django.conf import settings
-# Stripe amount coveter settings
+# Stripe amount converter settings
 from utils.stripe_amount_calculator import AmountConverter
 
 # URLS
@@ -12,7 +12,7 @@ payment_info_url = 'https://api.stripe.com/v1/payment_intents'
 # Stripe API key
 stripe_api_key = settings.STRIPE_SECRET_KEY
 
-# This header will use for global.
+# This header will be used for global.
 headers = {
     'Authorization': f'Bearer {stripe_api_key}',
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -26,8 +26,8 @@ headers_with_stripe_version = {
 
 def make_stripe_payment(name, email, phone, amount, currency):
     """
-    Name: Send payment data to customer.
-    Description: Requested customer user information send to stripe customer API.
+    Name: Send payment data to the customer.
+    Description: Requested customer user information sent to the Stripe customer API.
     :param currency:
     :param amount:
     :param name:
