@@ -10,7 +10,7 @@
 ### Create Database
 
 <h2>How to create mysql database</h2>
-First go to your terminal then follow the command line
+First, go to your terminal, then follow the command line
 ```psql
 psql postgres
 CREATE DATABASE streaming;
@@ -22,7 +22,7 @@ git clone https://github.com/mbrsagor/streaming.git
 cd streaming
 ```
 
-Create a python virtual environment:
+Create a Python virtual environment:
 
 ```bash/zsh
 virtualenv venv --python=python3.8
@@ -52,20 +52,17 @@ pip install -r requirements.txt
 ./manage.py createsuperuser
 ```
 
-###### If you run the app `docker` please follow the instructions:
-Open your terminal then run the command for `docker`
+###### If you run the app `docker`, please follow the instructions:
+Open your terminal, then run the command for `docker`
 
 ```bash
 docker compose up
 ```
-If you want to migrate or something similar please follow below commands:
+If you want to migrate or something similar, please follow the commands below:
 ```bash
 docker-compose exec backend sh
 python manage.py makemigrations accounts
 python manage.py migrate accounts
-python manage.py migrate
-python manage.py makemigrations
-python manage.py createsuperuser
 ```
 
 ## Happy coding :wink:
